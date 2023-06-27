@@ -7,6 +7,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const HotCollections = () => {
   const [nfts, setNFTS] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   async function getInfo() {
     const { data } = await axios.get(
@@ -17,12 +18,14 @@ const HotCollections = () => {
 
   useEffect(() => {
     getInfo();
-  }, []);
+    setLoading(false)
+  }, [loading]);
 
   const options = {
     loop: true,
     margin: 10,
     items: 4,
+    dots: false,
     nav: true,
     className: "owl-theme",
     responsive: {
@@ -33,13 +36,12 @@ const HotCollections = () => {
         items: 2,
       },
       1000: {
-        items: 3,
+        items: 3, 
       },
       1200: {
         items: 4,
       },
     },
-    dots: false,
   };
 
   return (
@@ -74,7 +76,7 @@ const HotCollections = () => {
                           alt=""
                         />
                       </Link>
-                      <i className="fa fa-check"></i>
+                      <i className="fa fa-check"></i> 
                     </div>
                     <div className="nft_coll_info">
                       <Link to="/explore">
@@ -87,8 +89,8 @@ const HotCollections = () => {
               ))}
             </OwlCarousel>
           ) : (
-            <div>
-              {new Array(4).fill(0).map((_, index) => (
+            <OwlCarousel {...options}>
+              {new Array(5).fill(0).map((_, index) => (
                 <div key={index}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
@@ -108,22 +110,20 @@ const HotCollections = () => {
                       </Link>
                       <i className="fa fa-check"></i>
                     </div>
-                    <div className="nft_coll_info">
-                      <Link to="/explore">
-                        <h4
-                          className="skeleton-box"
-                          style={{ width: 100, height: 20 }}
-                        ></h4>
-                      </Link>
-                      <span
+                    <div className="nft_coll_info" style={{display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
+                      <h4
+                        className="skeleton-box"
+                        style={{ width: 100, height: 20, marginBottom:10}}
+                      ></h4>
+                      <div
                         className="skeleton-box"
                         style={{ width: 60, height: 20 }}
-                      ></span>
+                      ></div>
                     </div>
                   </div>
                 </div>
               ))}
-            </div>
+            </OwlCarousel>
           )}
         </div>
       </div>

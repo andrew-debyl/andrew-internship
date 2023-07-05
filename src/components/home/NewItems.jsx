@@ -4,7 +4,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
-import Countdown from "./Countdown";
+import NftCard from "../NftCard";
 
 const NewItems = () => {
   const [nfts, setNfts] = useState([]);
@@ -60,60 +60,14 @@ const NewItems = () => {
             <OwlCarousel {...options}>
               {nfts.map((nft) => (
                 <div key={nft.id}>
-                  <div className="nft__item">
-                    <div className="author_list_pp">
-                      <Link
-                        to="/author"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Creator: Monica Lucas"
-                      >
-                        <img className="lazy" src={nft.authorImage} alt="" />
-                        <i className="fa fa-check"></i>
-                      </Link>
-                    </div>
-                    {nft.expiryDate && (
-                      <div className="de_countdown">
-                        <Countdown initialTime={nft.expiryDate} />
-                      </div>
-                    )}
-                    <div className="nft__item_wrap">
-                      <div className="nft__item_extra">
-                        <div className="nft__item_buttons">
-                          <button>Buy Now</button>
-                          <div className="nft__item_share">
-                            <h4>Share</h4>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-facebook fa-lg"></i>
-                            </a>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-twitter fa-lg"></i>
-                            </a>
-                            <a href="">
-                              <i className="fa fa-envelope fa-lg"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <Link to="/item-details">
-                        <img
-                          src={nft.nftImage}
-                          className="lazy nft__item_preview"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft__item_info">
-                      <Link to="/item-details">
-                        <h4>{nft.title}</h4>
-                      </Link>
-                      <div className="nft__item_price">{nft.price} ETH</div>
-                      <div className="nft__item_like">
-                        <i className="fa fa-heart"></i>
-                        <span>{nft.likes}</span>
-                      </div>
-                    </div>
-                  </div>
+                  <NftCard
+                    authorImage={nft.authorImage}
+                    expiryDate={nft.expiryDate}
+                    nftImage={nft.nftImage}
+                    title={nft.title}
+                    price={nft.price}
+                    likes={nft.likes}
+                  />
                 </div>
               ))}
             </OwlCarousel>
@@ -129,7 +83,10 @@ const NewItems = () => {
                         data-bs-placement="top"
                         title="Creator: Monica Lucas"
                       >
-                        <div className="skeleton-box" style={{ width:50, height:50, borderRadius:'50%' }} />
+                        <div
+                          className="skeleton-box"
+                          style={{ width: 50, height: 50, borderRadius: "50%" }}
+                        />
                         <i className="fa fa-check"></i>
                       </Link>
                     </div>
@@ -154,17 +111,26 @@ const NewItems = () => {
                       <Link to="/item-details">
                         <div
                           className="skeleton-box"
-                          style={{ width:"100%", height:300 }}
+                          style={{ width: "100%", height: 300 }}
                         />
                       </Link>
                     </div>
                     <div className="nft__item_info">
                       <Link to="/item-details">
-                        <div className="skeleton-box" style={{width:180, height:30}}></div>
+                        <div
+                          className="skeleton-box"
+                          style={{ width: 180, height: 30 }}
+                        ></div>
                       </Link>
-                      <div className="skeleton-box" style={{width:100, height:20}}></div>
+                      <div
+                        className="skeleton-box"
+                        style={{ width: 100, height: 20 }}
+                      ></div>
                       <div className="nft__item_like">
-                        <div className="skeleton-box" style={{width:30, height:15}}></div>
+                        <div
+                          className="skeleton-box"
+                          style={{ width: 30, height: 15 }}
+                        ></div>
                       </div>
                     </div>
                   </div>

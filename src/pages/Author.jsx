@@ -24,6 +24,10 @@ const Author = () => {
     setLoading(false);
   }, [loading]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function followButton() {
     if (following === false) {
       nfts.followers++;

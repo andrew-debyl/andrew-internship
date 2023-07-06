@@ -2,7 +2,7 @@ import React from "react";
 import Countdown from "./Countdown";
 import { Link } from "react-router-dom";
 
-function NftCard({ authorImage, expiryDate, nftImage, title, price, likes, authorId }) {
+function NftCard({ authorImage, expiryDate, nftImage, title, price, likes, authorId, nftId }) {
   return (
     <div className="nft__item">
       <div className="author_list_pp">
@@ -34,12 +34,12 @@ function NftCard({ authorImage, expiryDate, nftImage, title, price, likes, autho
             </div>
           </div>
         </div>
-        <Link to="/item-details">
+        <Link to={`/item-details/${nftId}`}>
           <img src={nftImage} className="lazy nft__item_preview" alt="" />
         </Link>
       </div>
       <div className="nft__item_info">
-        <Link to="/item-details">
+        <Link to={`/item-details/${nftId}`}>
           <h4>{title}</h4>
         </Link>
         <div className="nft__item_price">{price} ETH</div>

@@ -35,7 +35,7 @@ const TopSellers = () => {
                 {nfts.map((nft) => (
                   <li key={nft.id}>
                     <div className="author_list_pp">
-                      <Link to="/author">
+                      <Link to={`/author/${nft.authorId}`}>
                         <img
                           className="lazy pp-author"
                           src={nft.authorImage}
@@ -45,7 +45,7 @@ const TopSellers = () => {
                       </Link>
                     </div>
                     <div className="author_list_info">
-                      <Link to="/author">{nft.authorName}</Link>
+                      <Link to={`/author/${nft.authorId}`}>{nft.authorName}</Link>
                       <span>{nft.price} ETH</span>
                     </div>
                   </li>
@@ -56,13 +56,13 @@ const TopSellers = () => {
                 {new Array(12).fill(0).map((_,index) => (
                   <li key={index}>
                     <div className="author_list_pp">
-                      <Link to="/author">
+                      <div>
                         <div
                           className="skeleton-box"
                           style={{width:50, height:50, borderRadius:'50%'}}
                         />
                         <i className="fa fa-check"></i>
-                      </Link>
+                      </div>
                     </div>
                     <div className="author_list_info" style={{display:'flex', flexDirection:'column'}}>
                       <div className="skeleton-box" style={{width:100, height:20, marginBottom:10}}></div>

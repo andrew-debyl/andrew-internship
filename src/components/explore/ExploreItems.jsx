@@ -71,6 +71,7 @@ const ExploreItems = () => {
                 price={nft.price}
                 likes={nft.likes}
                 authorId={nft.authorId}
+                nftId = {nft.nftId}
               />
             </div>
           ))}
@@ -85,8 +86,7 @@ const ExploreItems = () => {
             >
               <div className="nft__item">
                 <div className="author_list_pp">
-                  <Link
-                    to="/author"
+                  <div
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Creator: Monica Lucas"
@@ -96,7 +96,7 @@ const ExploreItems = () => {
                       style={{ width: 50, height: 50, borderRadius: "50%" }}
                     />
                     <i className="fa fa-check"></i>
-                  </Link>
+                  </div>
                 </div>
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
@@ -116,20 +116,20 @@ const ExploreItems = () => {
                       </div>
                     </div>
                   </div>
-                  <Link to="/item-details">
+                  <div>
                     <div
                       className="skeleton-box"
                       style={{ width: "100%", height: 300 }}
                     />
-                  </Link>
+                  </div>
                 </div>
                 <div className="nft__item_info">
-                  <Link to="/item-details">
+                  <div>
                     <div
                       className="skeleton-box"
                       style={{ width: 180, height: 30 }}
                     ></div>
-                  </Link>
+                  </div>
                   <div
                     className="skeleton-box"
                     style={{ width: 100, height: 20 }}

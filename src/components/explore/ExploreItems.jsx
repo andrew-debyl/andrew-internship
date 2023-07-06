@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import NftCard from "../NftCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const ExploreItems = () => {
   const [nfts, setNfts] = useState([]);
@@ -18,7 +22,7 @@ const ExploreItems = () => {
 
       setTempNfts(data);
       setNfts(data.slice(0, 8));
-      setSliceNum(12)
+      setSliceNum(12);
     } else {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
@@ -26,7 +30,7 @@ const ExploreItems = () => {
 
       setTempNfts(data);
       setNfts(data.slice(0, 8));
-      setSliceNum(12)
+      setSliceNum(12);
     }
   }
 
@@ -62,6 +66,10 @@ const ExploreItems = () => {
               key={nft.id}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
               style={{ display: "block", backgroundSize: "cover" }}
+              data-aos="fade"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              data-aos-once="true"
             >
               <NftCard
                 authorImage={nft.authorImage}
@@ -71,7 +79,7 @@ const ExploreItems = () => {
                 price={nft.price}
                 likes={nft.likes}
                 authorId={nft.authorId}
-                nftId = {nft.nftId}
+                nftId={nft.nftId}
               />
             </div>
           ))}
@@ -83,6 +91,10 @@ const ExploreItems = () => {
               key={index}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
               style={{ display: "block", backgroundSize: "cover" }}
+              data-aos="fade"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              data-aos-once="true"
             >
               <div className="nft__item">
                 <div className="author_list_pp">
@@ -147,7 +159,13 @@ const ExploreItems = () => {
         </div>
       )}
 
-      <div className="col-md-12 text-center">
+      <div
+        className="col-md-12 text-center"
+        data-aos="fade"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-out"
+        data-aos-once="true"
+      >
         <Link
           to=""
           id="loadmore"

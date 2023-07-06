@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
 import NftCard from "../NftCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const NewItems = () => {
   const [nfts, setNfts] = useState([]);
@@ -52,7 +55,15 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>New Items</h2>
+              <h2
+                data-aos="fade"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+              >
+                New Items
+              </h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
@@ -67,8 +78,8 @@ const NewItems = () => {
                     title={nft.title}
                     price={nft.price}
                     likes={nft.likes}
-                    authorId = {nft.authorId}
-                    nftId = {nft.nftId}
+                    authorId={nft.authorId}
+                    nftId={nft.nftId}
                   />
                 </div>
               ))}
@@ -77,7 +88,14 @@ const NewItems = () => {
             <OwlCarousel {...options}>
               {new Array(5).fill(0).map((_, index) => (
                 <div key={index}>
-                  <div className="nft__item">
+                  <div
+                    className="nft__item"
+                    data-aos="fade"
+                    data-aos-delay="50"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                    data-aos-once="true"
+                  >
                     <div className="author_list_pp">
                       <div
                         data-bs-toggle="tooltip"

@@ -4,10 +4,14 @@ import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
 
 const HotCollections = () => {
   const [nfts, setNFTS] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   async function getInfo() {
     const { data } = await axios.get(
@@ -18,7 +22,7 @@ const HotCollections = () => {
 
   useEffect(() => {
     getInfo();
-    setLoading(false)
+    setLoading(false);
   }, [loading]);
 
   const options = {
@@ -36,7 +40,7 @@ const HotCollections = () => {
         items: 2,
       },
       1000: {
-        items: 3, 
+        items: 3,
       },
       1200: {
         items: 4,
@@ -50,14 +54,29 @@ const HotCollections = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Hot Collections</h2>
+              <h2
+                data-aos="fade"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-once="true"
+              >
+                Hot Collections
+              </h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
           {nfts.length > 0 ? (
             <OwlCarousel {...options}>
               {nfts.map((nft) => (
-                <div key={nft.id}>
+                <div
+                  key={nft.id}
+                  data-aos="fade"
+                  data-aos-delay="50"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease-in-out"
+                  data-aos-once="true"
+                >
                   <div className="nft_coll">
                     <div className="nft_wrap">
                       <Link to={`/item-details/${nft.nftId}`}>
@@ -76,7 +95,7 @@ const HotCollections = () => {
                           alt=""
                         />
                       </Link>
-                      <i className="fa fa-check"></i> 
+                      <i className="fa fa-check"></i>
                     </div>
                     <div className="nft_coll_info">
                       <Link to="/explore">
@@ -110,10 +129,18 @@ const HotCollections = () => {
                       </div>
                       <i className="fa fa-check"></i>
                     </div>
-                    <div className="nft_coll_info" style={{display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
+                    <div
+                      className="nft_coll_info"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
                       <h4
                         className="skeleton-box"
-                        style={{ width: 100, height: 20, marginBottom:10}}
+                        style={{ width: 100, height: 20, marginBottom: 10 }}
                       ></h4>
                       <div
                         className="skeleton-box"
